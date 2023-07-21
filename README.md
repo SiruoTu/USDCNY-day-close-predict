@@ -4,4 +4,4 @@
 
 采用指标：
 
-![image](https://github.com/SiruoTu/USDCNY-day-close-predict/blob/main/%E4%BA%BA%E6%B0%91%E5%B8%81%E6%8C%87%E6%A0%87.png)
+![image](https://github.com/SiruoTu/USDCNY-day-close-predict/blob/main/%E5%8F%82%E8%80%83%E6%8C%87%E6%A0%87.png)
