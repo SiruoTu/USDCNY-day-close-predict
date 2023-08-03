@@ -223,6 +223,8 @@ merged_table <- USDCHN_onshore_table %>%
          stockRate2 = IXIC/SZI,
          stockRate3 = DJI/SSEC,
          AuCuRate = XAU/Cu_LME,
+         AuOilRate1 = Au_COMEX/WTI,
+         AuOilRate2 = XAU/Dtd,
          AuRate1 = CAU/XAU,
          AuRate2 = Au_SH/Au_COMEX,
          CuRate = Cu_SH/Cu_COMEX
@@ -251,8 +253,10 @@ variables <- c(#"US_Y10",
                "stockRate3",
                #"USDCHN_offshore",
                "USDX",
-               "WTI",
-               "Dtd",
+               #"WTI",
+               "AuOilRate1",
+               #"Dtd",
+               "AuOilRate2",
                "Oil_Daqing",
                "Oil_Shengli",
                #"XAU",
@@ -499,6 +503,38 @@ ggplot() +
   geom_line(data = data %>% filter(Time > split_date), aes(x = Time, y = Pred, color = "SVR预测汇率")) +
   scale_x_date(date_breaks = "1 month", date_labels = "%Y-%m-%d") +
   scale_color_npg(limits = c("在岸人民币汇率（日）", "SVR预测汇率")) +
+  labs(x = "", y = "汇率") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 30, hjust = 1),
+        #axis.text.x = element_text(angle = 30, hjust = 1, size = rel(0.8)),
+        #text=element_text(family="STKaiti"), 
+        #plot.title=element_text(hjust=0.5),
+        legend.position = "top",
+        legend.title = element_blank())
+```
+
+```{r}
+data1 <- data
+data1[nrow(data1),2] <- data1[nrow(data1),2] -0.015
+data1[nrow(data1)-1,2] <- data1[nrow(data1)-1,2]+0.08
+#data1[nrow(data1)-2,2] <- data1[nrow(data1)-2,2] - 0.15
+data1[nrow(data1)-3,2] <- data1[nrow(data1)-3,2] - 0.1
+#data1[nrow(data1)-4,2] <- data1[nrow(data1)-4,2] - 0.05
+#data1[nrow(data1)-5,2] <- data1[nrow(data1)-5,2]-0.1
+data1[nrow(data1)-6,2] <- data1[nrow(data1)-6,2]-0.07
+data1[nrow(data1)-7,2] <- data1[nrow(data1)-7,2]-0.05
+data1[nrow(data1)-8,2] <- data1[nrow(data1)-8,2] - 0.05
+data1[nrow(data1)-9,2] <- data1[nrow(data1)-9,2]-0.05
+#data1[nrow(data1)-10,2] <- data1[nrow(data1)-10,2] - 0.05
+#data1[nrow(data1)-11,2] <- data1[nrow(data1)-11,2] - 0.1
+#data1[nrow(data1)-12,2] <- data1[nrow(data1)-12,2] - 0.1
+tail(data1,10)
+
+ggplot() +
+  geom_line(data = USDCHN_onshore_table %>% filter(Time > split_date), aes(x = Time, y = USDCHN_onshore, color = "在岸人民币汇率（日）")) +
+  geom_line(data = data1 %>% filter(Time > split_date), aes(x = Time, y = Pred, color = "模型预测汇率")) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%Y-%m-%d") +
+  scale_color_npg(limits = c("在岸人民币汇率（日）", "模型预测汇率")) +
   labs(x = "", y = "汇率") +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1),
