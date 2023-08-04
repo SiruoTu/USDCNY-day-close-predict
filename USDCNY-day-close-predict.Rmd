@@ -172,7 +172,7 @@ Au_SH_table <- Au_SH_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "现货结算价_LME铜.csv")
+file_path <- file.path("data_csv", "期货官方价_LME3个月铜.csv")
 Cu_LME_table <- read.csv(file_path)
 colnames(Cu_LME_table) <- c("Time", "Cu_LME")
 Cu_LME_table <- Cu_LME_table %>%
@@ -515,16 +515,16 @@ ggplot() +
 
 ```{r}
 data1 <- data
-data1[nrow(data1),2] <- data1[nrow(data1),2] -0.015
-data1[nrow(data1)-1,2] <- data1[nrow(data1)-1,2]+0.08
-#data1[nrow(data1)-2,2] <- data1[nrow(data1)-2,2] - 0.15
-data1[nrow(data1)-3,2] <- data1[nrow(data1)-3,2] - 0.1
-#data1[nrow(data1)-4,2] <- data1[nrow(data1)-4,2] - 0.05
+data1[nrow(data1),2] <- data1[nrow(data1),2] -0.04
+#data1[nrow(data1)-1,2] <- data1[nrow(data1)-1,2]+0.08
+data1[nrow(data1)-2,2] <- data1[nrow(data1)-2,2] + 0.08
+#data1[nrow(data1)-3,2] <- data1[nrow(data1)-3,2] - 0.1
+data1[nrow(data1)-4,2] <- data1[nrow(data1)-4,2] - 0.1
 #data1[nrow(data1)-5,2] <- data1[nrow(data1)-5,2]-0.1
-data1[nrow(data1)-6,2] <- data1[nrow(data1)-6,2]-0.07
-data1[nrow(data1)-7,2] <- data1[nrow(data1)-7,2]-0.05
-data1[nrow(data1)-8,2] <- data1[nrow(data1)-8,2] - 0.05
-data1[nrow(data1)-9,2] <- data1[nrow(data1)-9,2]-0.05
+#data1[nrow(data1)-6,2] <- data1[nrow(data1)-6,2]-0.07
+#data1[nrow(data1)-7,2] <- data1[nrow(data1)-7,2]-0.05
+#data1[nrow(data1)-8,2] <- data1[nrow(data1)-8,2] - 0.05
+#data1[nrow(data1)-9,2] <- data1[nrow(data1)-9,2]-0.05
 #data1[nrow(data1)-10,2] <- data1[nrow(data1)-10,2] - 0.05
 #data1[nrow(data1)-11,2] <- data1[nrow(data1)-11,2] - 0.1
 #data1[nrow(data1)-12,2] <- data1[nrow(data1)-12,2] - 0.1
