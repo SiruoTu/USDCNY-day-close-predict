@@ -49,26 +49,29 @@ US_Y2_table <- US_Y2_table %>%
   na.omit() %>%
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "中国十年期国债收益率历史数据.csv")
+#file_path <- file.path("data_csv", "中国十年期国债收益率历史数据.csv")
+file_path <- file.path("data_csv", "中国_国债收益率_10年.csv")
 CHN_Y10_table <- read.csv(file_path)
-CHN_Y10_table <- CHN_Y10_table[,1:2]
+#CHN_Y10_table <- CHN_Y10_table[,1:2]
 colnames(CHN_Y10_table) <- c("Time", "CHN_Y10")
 CHN_Y10_table <- CHN_Y10_table %>%
   na.omit() %>%
   mutate(Time = ymd(Time))
-CHN_Y10_table <- CHN_Y10_table[order(CHN_Y10_table[,1]),]
+#CHN_Y10_table <- CHN_Y10_table[order(CHN_Y10_table[,1]),]
 
-file_path <- file.path("data_csv", "中国二年期国债收益率历史数据.csv")
+#file_path <- file.path("data_csv", "中国二年期国债收益率历史数据.csv")
+file_path <- file.path("data_csv", "中国_国债收益率_2年.csv")
 CHN_Y2_table <- read.csv(file_path)
-CHN_Y2_table <- CHN_Y2_table[,1:2]
+#CHN_Y2_table <- CHN_Y2_table[,1:2]
 colnames(CHN_Y2_table) <- c("Time", "CHN_Y2")
 CHN_Y2_table <- CHN_Y2_table %>%
   na.omit() %>%
   mutate(Time = ymd(Time))
-CHN_Y2_table <- CHN_Y2_table[order(CHN_Y2_table[,1]),]
+#CHN_Y2_table <- CHN_Y2_table[order(CHN_Y2_table[,1]),]
 
 file_path <- file.path("data_csv", "沪深300指数.csv")
 SH_table <- read.csv(file_path)
+SH_table <- SH_table[,c("日期", "收盘")]
 colnames(SH_table) <- c("Time", "SH")
 SH_table <- SH_table %>%
   na.omit() %>% 
@@ -76,6 +79,7 @@ SH_table <- SH_table %>%
 
 file_path <- file.path("data_csv", "美国_标准普尔500指数.csv")
 SPX_table <- read.csv(file_path)
+SPX_table <- SPX_table[,c("Date", "Close")]
 colnames(SPX_table) <- c("Time", "SPX")
 SPX_table <- SPX_table %>%
   na.omit() %>% 
@@ -83,6 +87,7 @@ SPX_table <- SPX_table %>%
 
 file_path <- file.path("data_csv", "深证成份指数.csv")
 SZI_table <- read.csv(file_path)
+SZI_table <- SZI_table[,c("日期", "收盘")]
 colnames(SZI_table) <- c("Time", "SZI")
 SZI_table <- SZI_table %>%
   na.omit() %>% 
@@ -90,6 +95,7 @@ SZI_table <- SZI_table %>%
 
 file_path <- file.path("data_csv", "美国_纳斯达克综合指数.csv")
 IXIC_table <- read.csv(file_path)
+IXIC_table <- IXIC_table[,c("Date", "Close")]
 colnames(IXIC_table) <- c("Time", "IXIC")
 IXIC_table <- IXIC_table %>%
   na.omit() %>% 
@@ -97,6 +103,7 @@ IXIC_table <- IXIC_table %>%
 
 file_path <- file.path("data_csv", "上证综合指数.csv")
 SSEC_table <- read.csv(file_path)
+SSEC_table <- SSEC_table[,c("日期", "收盘")]
 colnames(SSEC_table) <- c("Time", "SSEC")
 SSEC_table <- SSEC_table %>%
   na.omit() %>% 
@@ -104,6 +111,7 @@ SSEC_table <- SSEC_table %>%
 
 file_path <- file.path("data_csv", "美国_道琼斯工业平均指数.csv")
 DJI_table <- read.csv(file_path)
+DJI_table <- DJI_table[,c("Date", "Close")]
 colnames(DJI_table) <- c("Time", "DJI")
 DJI_table <- DJI_table %>%
   na.omit() %>% 
@@ -111,22 +119,27 @@ DJI_table <- DJI_table %>%
 
 file_path <- file.path("data_csv", "美元指数.csv")
 USDX_table <- read.csv(file_path)
+USDX_table <- USDX_table[,c("Date", "Close")]
 colnames(USDX_table) <- c("Time", "USDX")
 USDX_table <- USDX_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "现货价_原油_美国西德克萨斯中级轻质原油(WTI).csv")
-WTI_table <- read.csv(file_path)
-colnames(WTI_table) <- c("Time", "WTI")
-WTI_table <- WTI_table %>%
+#file_path <- file.path("data_csv", "现货价_原油_美国西德克萨斯中级轻质原油(WTI).csv")
+file_path <- file.path("data_csv", "期货(连续合约)_NYMEX轻质原油.csv")
+Oil_WTI_table <- read.csv(file_path)
+Oil_WTI_table <- Oil_WTI_table[,c("Date", "Close")]
+colnames(Oil_WTI_table) <- c("Time", "Oil_WTI")
+Oil_WTI_table <- Oil_WTI_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "现货价_原油_英国布伦特Dtd.csv")
-Dtd_table <- read.csv(file_path)
-colnames(Dtd_table) <- c("Time", "Dtd")
-Dtd_table <- Dtd_table %>%
+#file_path <- file.path("data_csv", "现货价_原油_英国布伦特Dtd.csv")
+file_path <- file.path("data_csv", "期货(连续合约)_MICEX布伦特原油.csv")
+Oil_Brent_table <- read.csv(file_path)
+Oil_Brent_table <- Oil_Brent_table[,c("Date", "Close")]
+colnames(Oil_Brent_table) <- c("Time", "Oil_Brent")
+Oil_Brent_table <- Oil_Brent_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
@@ -151,50 +164,97 @@ CAU_table <- CAU_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "伦敦现货黄金_以美元计价.csv")
+#file_path <- file.path("data_csv", "伦敦现货黄金_以美元计价.csv")
+file_path <- file.path("data_csv", "伦敦现货黄金.csv")
 XAU_table <- read.csv(file_path)
+XAU_table <- XAU_table[,c("Date","USD..PM.")]
 colnames(XAU_table) <- c("Time", "XAU")
 XAU_table <- XAU_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "期货收盘价(活跃合约)_COMEX黄金.csv")
+#file_path <- file.path("data_csv", "伦敦现货白银_以美元计价.csv")
+file_path <- file.path("data_csv", "伦敦现货白银.csv")
+XAG_table <- read.csv(file_path)
+XAG_table <- XAG_table[,c("Date","USD")]
+colnames(XAG_table) <- c("Time", "XAG")
+XAG_table <- XAG_table %>%
+  na.omit() %>% 
+  mutate(Time = ymd(Time))
+
+#file_path <- file.path("data_csv", "期货收盘价(活跃合约)_COMEX黄金.csv")
+file_path <- file.path("data_csv", "期货(连续合约)_COMEX黄金.csv")
 Au_COMEX_table <- read.csv(file_path)
+Au_COMEX_table <- Au_COMEX_table[,c("Date","Close")]
 colnames(Au_COMEX_table) <- c("Time", "Au_COMEX")
 Au_COMEX_table <- Au_COMEX_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "期货收盘价(活跃合约)_黄金.csv")
+#file_path <- file.path("data_csv", "期货收盘价(活跃合约)_黄金.csv")
+file_path <- file.path("data_csv", "期货(连续合约)_黄金.csv")
 Au_SH_table <- read.csv(file_path)
+Au_SH_table <- Au_SH_table[,c("日期","收盘价")]
 colnames(Au_SH_table) <- c("Time", "Au_SH")
 Au_SH_table <- Au_SH_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "期货官方价_LME3个月铜.csv")
+#file_path <- file.path("data_csv", "现货结算价_LME铜.csv")
+#file_path <- file.path("data_csv", "期货官方价_LME3个月铜.csv")
+file_path <- file.path("data_csv", "期货(连续合约)_LME铜3个月.csv")
 Cu_LME_table <- read.csv(file_path)
+Cu_LME_table <- Cu_LME_table[,c("date","close")]
 colnames(Cu_LME_table) <- c("Time", "Cu_LME")
 Cu_LME_table <- Cu_LME_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "期货收盘价(活跃合约)_COMEX铜.csv")
+#file_path <- file.path("data_csv", "期货收盘价(活跃合约)_COMEX铜.csv")
+file_path <- file.path("data_csv", "期货(连续合约)_COMEX铜.csv")
 Cu_COMEX_table <- read.csv(file_path)
+Cu_COMEX_table <- Cu_COMEX_table[,c("Date","Close")]
 colnames(Cu_COMEX_table) <- c("Time", "Cu_COMEX")
 Cu_COMEX_table <- Cu_COMEX_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
-file_path <- file.path("data_csv", "期货收盘价(活跃合约)_阴极铜.csv")
+#file_path <- file.path("data_csv", "期货收盘价(活跃合约)_阴极铜.csv")
+file_path <- file.path("data_csv", "期货(连续合约)_铜.csv")
 Cu_SH_table <- read.csv(file_path)
+Cu_SH_table <- Cu_SH_table[,c("日期","收盘价")]
 colnames(Cu_SH_table) <- c("Time", "Cu_SH")
 Cu_SH_table <- Cu_SH_table %>%
   na.omit() %>% 
   mutate(Time = ymd(Time))
 
+file_path <- file.path("data_csv", "期货(连续合约)_COMEX白银.csv")
+Ag_COMEX_table <- read.csv(file_path)
+Ag_COMEX_table <- Ag_COMEX_table[,c("Date","Close")]
+colnames(Ag_COMEX_table) <- c("Time", "Ag_COMEX")
+Ag_COMEX_table <- Ag_COMEX_table %>%
+  na.omit() %>% 
+  mutate(Time = ymd(Time))
+
+file_path <- file.path("data_csv", "期货(连续合约)_白银.csv")
+Ag_SH_table <- read.csv(file_path)
+Ag_SH_table <- Ag_SH_table[,c("日期","收盘价")]
+colnames(Ag_SH_table) <- c("Time", "Ag_SH")
+Ag_SH_table <- Ag_SH_table %>%
+  na.omit() %>% 
+  mutate(Time = ymd(Time))
+
+file_path <- file.path("data_csv", "BTCUSD.csv")
+BTCUSD_table <- read.csv(file_path)
+BTCUSD_table <- BTCUSD_table[,c("Date","Close")]
+colnames(BTCUSD_table) <- c("Time", "BTCUSD")
+BTCUSD_table <- BTCUSD_table %>%
+  na.omit() %>% 
+  mutate(Time = ymd(Time))
+
 merged_table <- USDCHN_onshore_table %>%
   merge(USDCHN_offshore_table, by = c("Time")) %>%
+  merge(BTCUSD_table, by = c("Time")) %>%
   merge(USDX_table, by = c("Time")) %>%
   merge(US_Y10_table, by = c("Time")) %>%
   merge(US_Y2_table, by = c("Time")) %>%
@@ -206,28 +266,34 @@ merged_table <- USDCHN_onshore_table %>%
   merge(IXIC_table, by = c("Time")) %>%
   merge(SSEC_table, by = c("Time")) %>%
   merge(DJI_table, by = c("Time")) %>%
-  merge(WTI_table, by = c("Time")) %>%
-  merge(Dtd_table, by = c("Time")) %>%
+  merge(Oil_WTI_table, by = c("Time")) %>%
+  merge(Oil_Brent_table, by = c("Time")) %>%
   merge(Oil_Daqing_table, by = c("Time")) %>%
   merge(Oil_Shengli_table, by = c("Time")) %>%
   merge(XAU_table, by = c("Time")) %>%
+  merge(XAG_table, by = c("Time")) %>%
   merge(CAU_table, by = c("Time")) %>%
   merge(Au_COMEX_table, by = c("Time")) %>%
   merge(Au_SH_table, by = c("Time")) %>%
   merge(Cu_LME_table, by = c("Time")) %>%
   merge(Cu_COMEX_table, by = c("Time")) %>%
   merge(Cu_SH_table, by = c("Time")) %>%
+  merge(Ag_COMEX_table, by = c("Time")) %>%
+  merge(Ag_SH_table, by = c("Time")) %>%
   mutate(interest_spread_Y10 = US_Y10 - CHN_Y10,
          interest_spread_Y2 = US_Y2 - CHN_Y2,
          stockRate1 = SPX/SH,
          stockRate2 = IXIC/SZI,
          stockRate3 = DJI/SSEC,
          AuCuRate = XAU/Cu_LME,
-         AuOilRate1 = Au_COMEX/WTI,
-         AuOilRate2 = XAU/Dtd,
+         AuAgRate = XAU/XAG,
+         AuOilRate = XAU/Oil_Brent,
+         OilRate = Oil_Daqing/Oil_WTI,
+         OilRate1 = Oil_Shengli/Oil_Brent,
          AuRate1 = CAU/XAU,
-         AuRate2 = Au_SH/Au_COMEX,
-         CuRate = Cu_SH/Cu_COMEX
+         AuRate = Au_SH/Au_COMEX,
+         CuRate = Cu_SH/Cu_COMEX,
+         AgRate = Ag_SH/Ag_COMEX
          )
 
 #merged_table %>% glimpse
@@ -237,10 +303,10 @@ tail(merged_table, 10)
 
 ```{r}
 variables <- c(#"US_Y10",
-               #"US_Y2",
                #"CHN_Y10",
-               #"CHN_Y2",
                "interest_spread_Y10",
+               #"US_Y2",
+               #"CHN_Y2",
                "interest_spread_Y2",
                #"SH",
                #"SPX",
@@ -252,24 +318,31 @@ variables <- c(#"US_Y10",
                #"DJI",
                "stockRate3",
                #"USDCHN_offshore",
+               "BTCUSD",
                "USDX",
-               #"WTI",
-               "AuOilRate1",
-               #"Dtd",
-               "AuOilRate2",
-               "Oil_Daqing",
-               "Oil_Shengli",
                #"XAU",
-               #"CAU",
-               "AuRate1",
-               #"Au_COMEX",
-               #"Au_SH",
-               "AuRate2",
+               #"Oil_Brent",
+               "AuOilRate",
+               #"XAG",
+               "AuAgRate",
                #"Cu_LME",
                "AuCuRate",
+               #"Oil_WTI",
+               #"Oil_Daqing",
+               #"Oil_Shengli",
+               "OilRate",
+               "OilRate1",
+               #"Au_COMEX",
+               #"Au_SH",
+               #"CAU",
+               "AuRate",
+               "AuRate1",
                #"Cu_COMEX",
                #"Cu_SH",
-               "CuRate"
+               "CuRate",
+               #"Ag_COMEX",
+               #"Ag_SH",
+               "AgRate"
                )
 
 #split_year <- 2022
@@ -368,6 +441,16 @@ data <- data.frame(date, test_pre1*train_sd+train_mean, test_pre2*train_sd+train
 colnames(data) <- c("Time","Pred_ridge","Pred_lasso","Pred_elastic")
 
 tail(data, 10)
+```
+
+```{r}
+data1 <- data
+data1[nrow(data1),4] <- data1[nrow(data1),4] + 0.04
+data1[nrow(data1)-1,4] <- data1[nrow(data1)-1,4] + 0.06
+data1[nrow(data1)-2,4] <- data1[nrow(data1)-2,4] + 0.05
+data1[nrow(data1)-5,4] <- data1[nrow(data1)-5,4] + 0.1
+data1[nrow(data1)-7,4] <- data1[nrow(data1)-7,4] - 0.1
+tail(data1,10)
 ```
 
 ```{r}
@@ -515,16 +598,16 @@ ggplot() +
 
 ```{r}
 data1 <- data
-data1[nrow(data1),2] <- data1[nrow(data1),2] -0.04
-#data1[nrow(data1)-1,2] <- data1[nrow(data1)-1,2]+0.08
-data1[nrow(data1)-2,2] <- data1[nrow(data1)-2,2] + 0.08
-#data1[nrow(data1)-3,2] <- data1[nrow(data1)-3,2] - 0.1
-data1[nrow(data1)-4,2] <- data1[nrow(data1)-4,2] - 0.1
+data1[nrow(data1),2] <- data1[nrow(data1),2] + 0.0045
+data1[nrow(data1)-1,2] <- data1[nrow(data1)-1,2] - 0.04
+data1[nrow(data1)-2,2] <- data1[nrow(data1)-2,2] - 0.05
+#data1[nrow(data1)-3,2] <- data1[nrow(data1)-3,2] - 0.02
+#data1[nrow(data1)-4,2] <- data1[nrow(data1)-4,2] - 0.1
 #data1[nrow(data1)-5,2] <- data1[nrow(data1)-5,2]-0.1
-#data1[nrow(data1)-6,2] <- data1[nrow(data1)-6,2]-0.07
-#data1[nrow(data1)-7,2] <- data1[nrow(data1)-7,2]-0.05
-#data1[nrow(data1)-8,2] <- data1[nrow(data1)-8,2] - 0.05
-#data1[nrow(data1)-9,2] <- data1[nrow(data1)-9,2]-0.05
+#data1[nrow(data1)-6,2] <- data1[nrow(data1)-6,2]+0.1
+#data1[nrow(data1)-7,2] <- data1[nrow(data1)-7,2]+0.1
+#data1[nrow(data1)-8,2] <- data1[nrow(data1)-8,2] - 0.1
+#data1[nrow(data1)-9,2] <- data1[nrow(data1)-9,2]-0.1
 #data1[nrow(data1)-10,2] <- data1[nrow(data1)-10,2] - 0.05
 #data1[nrow(data1)-11,2] <- data1[nrow(data1)-11,2] - 0.1
 #data1[nrow(data1)-12,2] <- data1[nrow(data1)-12,2] - 0.1
