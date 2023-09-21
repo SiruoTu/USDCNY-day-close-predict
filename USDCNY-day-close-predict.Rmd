@@ -253,8 +253,8 @@ BTCUSD_table <- BTCUSD_table %>%
   mutate(Time = ymd(Time))
 
 merged_table <- USDCHN_onshore_table %>%
-  merge(USDCHN_offshore_table, by = c("Time")) %>%
-  merge(BTCUSD_table, by = c("Time")) %>%
+  #merge(USDCHN_offshore_table, by = c("Time")) %>%
+  #merge(BTCUSD_table, by = c("Time")) %>%
   merge(USDX_table, by = c("Time")) %>%
   merge(US_Y10_table, by = c("Time")) %>%
   merge(US_Y2_table, by = c("Time")) %>%
@@ -318,7 +318,7 @@ variables <- c(#"US_Y10",
                #"DJI",
                "stockRate3",
                #"USDCHN_offshore",
-               "BTCUSD",
+               #"BTCUSD",
                "USDX",
                #"XAU",
                #"Oil_Brent",
@@ -445,11 +445,16 @@ tail(data, 10)
 
 ```{r}
 data1 <- data
-data1[nrow(data1),4] <- data1[nrow(data1),4] + 0.04
-data1[nrow(data1)-1,4] <- data1[nrow(data1)-1,4] + 0.06
-data1[nrow(data1)-2,4] <- data1[nrow(data1)-2,4] + 0.05
-data1[nrow(data1)-5,4] <- data1[nrow(data1)-5,4] + 0.1
-data1[nrow(data1)-7,4] <- data1[nrow(data1)-7,4] - 0.1
+data1[nrow(data1),3] <- data1[nrow(data1),3] - 0.005
+data1[nrow(data1)-7,3] <- data1[nrow(data1)-7,3] - 0.05
+data1[nrow(data1)-8,3] <- data1[nrow(data1)-8,3] - 0.07
+data1[nrow(data1)-9,3] <- data1[nrow(data1)-9,3] - 0.04
+
+#data1[nrow(data1),4] <- data1[nrow(data1),4] + 0.04
+#data1[nrow(data1)-1,4] <- data1[nrow(data1)-1,4] + 0.06
+#data1[nrow(data1)-2,4] <- data1[nrow(data1)-2,4] + 0.05
+#data1[nrow(data1)-5,4] <- data1[nrow(data1)-5,4] + 0.1
+#data1[nrow(data1)-7,4] <- data1[nrow(data1)-7,4] - 0.1
 tail(data1,10)
 ```
 
@@ -598,15 +603,15 @@ ggplot() +
 
 ```{r}
 data1 <- data
-data1[nrow(data1),2] <- data1[nrow(data1),2] + 0.0045
-data1[nrow(data1)-1,2] <- data1[nrow(data1)-1,2] - 0.04
-data1[nrow(data1)-2,2] <- data1[nrow(data1)-2,2] - 0.05
-#data1[nrow(data1)-3,2] <- data1[nrow(data1)-3,2] - 0.02
-#data1[nrow(data1)-4,2] <- data1[nrow(data1)-4,2] - 0.1
-#data1[nrow(data1)-5,2] <- data1[nrow(data1)-5,2]-0.1
-#data1[nrow(data1)-6,2] <- data1[nrow(data1)-6,2]+0.1
-#data1[nrow(data1)-7,2] <- data1[nrow(data1)-7,2]+0.1
-#data1[nrow(data1)-8,2] <- data1[nrow(data1)-8,2] - 0.1
+data1[nrow(data1),2] <- data1[nrow(data1),2] - 0.075
+data1[nrow(data1)-1,2] <- data1[nrow(data1)-1,2] - 0.14
+data1[nrow(data1)-2,2] <- data1[nrow(data1)-2,2] - 0.14
+data1[nrow(data1)-3,2] <- data1[nrow(data1)-3,2] - 0.12
+data1[nrow(data1)-4,2] <- data1[nrow(data1)-4,2] - 0.11
+data1[nrow(data1)-5,2] <- data1[nrow(data1)-5,2] - 0.06
+data1[nrow(data1)-6,2] <- data1[nrow(data1)-6,2] - 0.08
+data1[nrow(data1)-7,2] <- data1[nrow(data1)-7,2] - 0.06
+#data1[nrow(data1)-8,2] <- data1[nrow(data1)-8,2] - 0.02
 #data1[nrow(data1)-9,2] <- data1[nrow(data1)-9,2]-0.1
 #data1[nrow(data1)-10,2] <- data1[nrow(data1)-10,2] - 0.05
 #data1[nrow(data1)-11,2] <- data1[nrow(data1)-11,2] - 0.1
